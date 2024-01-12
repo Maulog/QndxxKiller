@@ -179,7 +179,7 @@ try:
         logger.log("not found login button")
 
     # 点击搜索框
-    if not click_image('./img/search_button.png', 2):
+    if not click_image('./img/search_button.png', 4):
         logger.log("not found search button")
     else:
         pyperclip.copy('辽宁共青团')
@@ -188,11 +188,11 @@ try:
         time.sleep(1)
 
     # 点击学习平台
-    if not click_image('./img/pingtai.png', 2):
+    if not click_image('./img/pingtai.png', 4):
         logger.log("not found pingtai")
 
     # 点击青年大学习
-    if not click_image('./img/qndxx.png', 19):
+    if not click_image('./img/qndxx.png', 30):
         logger.log("not found qndxx")
         
     # 主屏幕操作
@@ -207,7 +207,7 @@ try:
     if not click_image('./img/xuexi.png', 4, confidence_score=0.6):
         logger.log("not found xuexi")
 
-    if confirm_image('./img/benqi.png', confidence_score=0.85) and confirm_image('./img/wangqi.png', confidence_score=0.85):
+    if confirm_image('./img/benqi.png', confidence_score=0.6) and confirm_image('./img/wangqi.png', confidence_score=0.6):
         benqi_location = get_image_location('./img/benqi.png')
         wangqi_location = get_image_location('./img/wangqi.png')
         logger.log(benqi_location)
@@ -229,7 +229,7 @@ try:
             time.sleep(2)
 
             # 出现省份市级选择
-            if not click_image('./img/qingxuanze1.png', 2):
+            if not click_image('./img/qingxuanze1.png', 3):
                 logger.log("not found qingxuanze1")
             else:
                 qingxuanze1_location = get_image_location('./img/qingxuanze1.png')
@@ -312,6 +312,11 @@ try:
     else:
         logger.log("not found benqi or wangqi")
         
+    # 读取log文件的最后一行并用弹窗打印
+    with open(log_path, 'r', encoding='utf-8') as f:
+        lines = f.readlines()
+        last_line = lines[-1]
+        ctypes.windll.user32.MessageBoxW(0, last_line, "提示", 0)
     exit()
 
 except Exception as e:
