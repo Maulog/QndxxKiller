@@ -216,7 +216,7 @@ try:
         # logger.log(x_distance)
         
         if y_distance < 200:  # 两个按钮的x坐标差值小于40，说明两个坐标特别靠近，没有新一期，退出
-            logger.log('本期还没开始')
+            logger.log('no new period')
             pyautogui.hotkey('alt', 'f4')
             pyautogui.hotkey('alt', 'f4')
             wechat_state.restore()
@@ -282,7 +282,7 @@ try:
                     save_window_image('微信', save_path, title=title_name)
                     pyautogui.hotkey('alt', 'f4')
                     pyautogui.hotkey('alt', 'f4')
-                    logger.log("学习完成")
+                    logger.log("finished study")
                     
                     # 发送到指定群聊
                     time.sleep(1)
@@ -304,7 +304,7 @@ try:
                         pyautogui.hotkey('ctrl', 'v') # 粘贴图片
                         
                         if click_image('./img/send_button.png', 1):
-                            logger.log("发送成功")
+                            logger.log("fasongchenggong")
                     
         
         
@@ -316,7 +316,7 @@ try:
     with open(log_path, 'r', encoding='utf-8') as f:
         lines = f.readlines()
         last_line = lines[-1]
-        ctypes.windll.user32.MessageBoxW(0, last_line, "提示", 0)
+        ctypes.windll.user32.MessageBoxW(0, last_line, "alert", 0)
     exit()
 
 except Exception as e:
