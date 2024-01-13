@@ -274,9 +274,9 @@ try:
                 time.sleep(4)
                 pyautogui.hotkey('alt', 'left')
                 time.sleep(1)
-                if not click_image('./img/geren.png', 4):
+                if not click_image('./img/geren.png', 7):
                     logger.log("not found geren")
-                if not click_image('./img/xuexijilu.png', 3):
+                if not click_image('./img/xuexijilu.png', 5):
                     logger.log("not found xuexijilu")
                 else:
                     save_window_image('微信', save_path, title=title_name)
@@ -286,7 +286,7 @@ try:
                     
                     # 发送到指定群聊
                     time.sleep(1)
-                    if not click_image('./img/search_button.png', 2):
+                    if not click_image('./img/search_button.png', 3):
                         print("not found search button")
                     else:
                         pyperclip.copy('计算机物联网第一支部')
