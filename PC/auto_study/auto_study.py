@@ -37,6 +37,13 @@ try:
 
         return max_number
 
+    def get_stat_exit(log_path):
+        # 读取log文件的最后一行并用弹窗打印，不能中文
+        with open(log_path, 'r', encoding='utf-8') as f:
+            lines = f.readlines()
+            last_line = lines[-1]
+            ctypes.windll.user32.MessageBoxW(0, last_line, "alert", 0)
+        exit()
 
     root_path = os.path.dirname(os.path.abspath(__file__))
     os.chdir(root_path)
@@ -220,7 +227,7 @@ try:
             pyautogui.hotkey('alt', 'f4')
             pyautogui.hotkey('alt', 'f4')
             wechat_state.restore()
-            exit()
+            get_stat_exit(log_path)
         else:
             center_point = (round((benqi_location[0]+wangqi_location[0])/2),
                             round((benqi_location[1]+wangqi_location[1])/2))
@@ -312,13 +319,8 @@ try:
     else:
         logger.log("not found benqi or wangqi")
         
-    # 读取log文件的最后一行并用弹窗打印
-    with open(log_path, 'r', encoding='utf-8') as f:
-        lines = f.readlines()
-        last_line = lines[-1]
-        ctypes.windll.user32.MessageBoxW(0, last_line, "alert", 0)
-    exit()
+    get_stat_exit(log_path)
 
 except Exception as e:
     logger.log(f"Error: {str(e)}", level=logging.ERROR)
-    exit()
+    get_stat_exit(log_path)
